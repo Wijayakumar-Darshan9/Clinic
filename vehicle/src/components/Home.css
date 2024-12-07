@@ -1,0 +1,22 @@
+.home {
+    background: url('./images/doctor.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.advertisements {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.ad {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
