@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Route, BrowserRouter as Router, Routes, } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
+import axios from 'axios';
 import AdminDashboard from './components/AdminDashboard';
 import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import PatientDetails from './components/Patient';
-import { default as PatientPortal, default as UserDashboard } from './components/PatientPortal';
+import PatientPortal from './components/PatientPortal';
 import Signup from './components/Signup';
 import PharmacistDashboard from './components/PharmacistDashboard';
 import ReceptionDashboard from './components/Receptionist';
 import InventoryList from './components/InventoryList';
 import InventoryForm from './components/InventoryForm';
 import StockCheck from './components/StockCheck';
-import DispenceMedicine from './components/DispenceMedicine'; // Correct component name
-import axios from 'axios';
+import DispenceMedicine from './components/DispenceMedicine';
+import BillManagement from './components/BillManagement';
+import NewInvoice from './components/NewInvoice';
+import TotalInvoices from './components/TotalInvoice';
+import InvoiceBill from './components/InvoiceBill';
+import UpdateInvoice from './components/UpdateBill';
 import './App.css';
 
 const App = () => {
@@ -26,7 +31,7 @@ const App = () => {
         if (token) {
             setIsAuthenticated(true);
         }
-        fetchInventory(); // Fetch inventory on app load
+        fetchInventory();
     }, []);
 
     const fetchInventory = async () => {
@@ -34,7 +39,7 @@ const App = () => {
             const response = await axios.get('http://localhost:8085/ht/Pharmacist/inventory');
             setInventory(response.data);
         } catch (error) {
-            console.error("Error fetching inventory:", error);
+            console.error("Error fetching inventory:", error.response?.data || error.message);
         }
     };
 
@@ -47,7 +52,7 @@ const App = () => {
             await axios.post('http://localhost:8085/ht/Pharmacist/inventory', item);
             fetchInventory();
         } catch (error) {
-            console.error("Error adding item:", error);
+            console.error("Error adding item:", error.response?.data || error.message);
         }
     };
 
@@ -57,7 +62,7 @@ const App = () => {
             fetchInventory();
             setCurrentItem(null);
         } catch (error) {
-            console.error("Error updating item:", error);
+            console.error("Error updating item:", error.response?.data || error.message);
         }
     };
 
@@ -66,31 +71,31 @@ const App = () => {
             await axios.delete(`http://localhost:8085/ht/Pharmacist/inventory/${id}`);
             fetchInventory();
         } catch (error) {
-            console.error("Error deleting item:", error);
+            console.error("Error deleting item:", error.response?.data || error.message);
         }
     };
 
-    // Define handleDispense function
     const handleDispense = async (itemId, quantity) => {
-        const API_URL = 'http://localhost:8085/ht/Pharmacist/inventory'; // Ensure this matches your backend URL
         try {
-            const token = localStorage.getItem('token'); // Adjust based on your authentication method
-            const response = await axios.put(`${API_URL}/${itemId}/dispence`, null, {
-                params: { quantity },
-                headers: {
-                    'Authorization': `Bearer ${token}` // Include the authorization token
+            const token = localStorage.getItem('token');
+            const response = await axios.put(
+                `http://localhost:8085/ht/Pharmacist/inventory/${itemId}/dispence`,
+                null,
+                {
+                    params: { quantity },
+                    headers: { Authorization: `Bearer ${token}` },
                 }
-            });
+            );
 
             if (response.status === 200) {
-                alert('Successfully dispensed the item!'); // Success message
-                await refreshInventory(); // Refresh the inventory list
+                alert('Item dispensed successfully!');
+                refreshInventory();
             } else {
-                alert('Failed to dispense item. Please check the details and try again.');
+                alert('Failed to dispense item. Please try again.');
             }
         } catch (error) {
-            console.error("Error dispensing item:", error.response ? error.response.data : error);
-            alert(error.response?.data?.message || 'Error dispensing item. Please check the quantity or item status.');
+            console.error("Error dispensing item:", error.response?.data || error.message);
+            alert(error.response?.data?.message || 'Error dispensing item.');
         }
     };
 
@@ -102,7 +107,7 @@ const App = () => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-                    <Route path="/user-dashboard" element={<UserDashboard />} />
+                    <Route path="/user-dashboard" element={<PatientPortal />} />
                     <Route path="/admin-dashboard" element={<AdminDashboard />} />
                     <Route path="/patients/:id" element={<PatientDetails />} />
                     <Route path="/patient-portal" element={<PatientPortal />} />
@@ -112,6 +117,12 @@ const App = () => {
                     <Route path="/inventory/list" element={<InventoryList inventory={inventory} onEdit={setCurrentItem} onDelete={deleteItem} refreshInventory={refreshInventory} />} />
                     <Route path="/inventory/stock" element={<StockCheck inventory={inventory} />} />
                     <Route path="/inventory/dispence" element={<DispenceMedicine inventory={inventory} handleDispense={handleDispense} refreshInventory={refreshInventory} />} />
+                    <Route path="/bill-management" element={<BillManagement refreshInventory={refreshInventory} />} />
+                    <Route path="/new-invoice" element={<NewInvoice inventory={inventory}  refreshInventory={refreshInventory} />} />
+                    <Route path="/total-invoices" element={<TotalInvoices />} />
+                    <Route path="/invoice-bill" element={<InvoiceBill />} />
+                    <Route path="/update-bill" element={<UpdateInvoice />} />
+                    <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
             </div>
         </Router>

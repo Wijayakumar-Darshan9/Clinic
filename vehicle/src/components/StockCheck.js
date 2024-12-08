@@ -11,7 +11,7 @@ const StockCheck = ({ inventory }) => {
                 {inStockItems.length > 0 ? (
                     inStockItems.map(item => (
                         <li key={item.id}>
-                            {item.name} - Quantity: {item.quantity} - Price: ${item.price.toFixed(2)} - Stock: {item.stock}
+                           Name : {item.name}   Price: ${item.price.toFixed(2)}  Stock: {item.stock}
                         </li>
                     ))
                 ) : (

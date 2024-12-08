@@ -3,11 +3,11 @@ import './InventoryList.css';
 
 const InventoryList = ({ inventory, onDelete, refreshInventory }) => {
     const [editingItem, setEditingItem] = useState(null);
-    const [updatedItem, setUpdatedItem] = useState({ name: '', quantity: 0, price: 0.0, stock: 0 });
+    const [updatedItem, setUpdatedItem] = useState({ name: '', price: 0.0, stock: 0 });
 
     const handleEditClick = (item) => {
         setEditingItem(item);
-        setUpdatedItem({ name: item.name, quantity: item.quantity, price: item.price, stock: item.stock });
+        setUpdatedItem({ name: item.name,  price: item.price, stock: item.stock });
     };
 
     const handleUpdate = async () => {
@@ -38,7 +38,7 @@ const InventoryList = ({ inventory, onDelete, refreshInventory }) => {
             <ul>
                 {inventory.map(item => (
                     <li key={item.id}>
-                        {item.name} - Quantity: {item.quantity} - Price: ${item.price.toFixed(2)} - Stock: {item.stock}
+                        Name : {item.name}  Price: ${item.price.toFixed(2)}  Stock: {item.stock}
                         <button onClick={() => handleEditClick(item)}>Edit</button>
                         <button onClick={() => onDelete(item.id)}>Delete</button>
                     </li>
@@ -53,11 +53,7 @@ const InventoryList = ({ inventory, onDelete, refreshInventory }) => {
                         value={updatedItem.name}
                         onChange={(e) => setUpdatedItem({ ...updatedItem, name: e.target.value })}
                     />
-                    <input
-                        type="number"
-                        value={updatedItem.quantity}
-                        onChange={(e) => setUpdatedItem({ ...updatedItem, quantity: Number(e.target.value) })}
-                    />
+                    
                     <input
                         type="number"
                         step="0.01" // Allow for decimal values
