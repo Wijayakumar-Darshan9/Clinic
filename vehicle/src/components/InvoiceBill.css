@@ -1,0 +1,59 @@
+.invoice-bill-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.invoice-bill-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.invoice-bill-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.invoice-bill-table th, .invoice-bill-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.invoice-bill-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.invoice-bill-container button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+    width: 150px;
+}
+
+.invoice-bill-container button:hover {
+    background-color: #0056b3;
+}
+
+.invoice-bill-container ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.invoice-bill-container li {
+    margin-bottom: 5px;
+}

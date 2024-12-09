@@ -1,0 +1,36 @@
+.bill-management-container {
+    background-color: #094078;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.bill-management-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+.bill-management-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+.bill-management-container button:hover {
+    background-color: #4CAF50;
+}
+
+.bill-management-container .btn-container {
+    display: flex;
+    justify-content: space-around;
+} 

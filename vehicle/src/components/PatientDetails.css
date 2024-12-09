@@ -1,0 +1,51 @@
+.patient-details-container {
+    padding: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color: white;
+    width:300px;
+}
+
+.submit-button {
+    background-color: #008CBA;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.date-button {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+.update-button {
+    background-color: #ff9800;
+    color: white;
+    width: 25%;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+    width:25%
+}
+
+.treatment-details {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

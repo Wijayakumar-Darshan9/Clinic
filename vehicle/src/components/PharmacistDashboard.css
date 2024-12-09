@@ -1,0 +1,99 @@
+/* PharmacistDashboard.css */
+
+/* General Styles */
+body {
+    background: url('./pharmacy.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif; /* Set a default font for the body */
+    background-color: #f4f4f4; /* Light background color */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding around the body */
+}
+
+h1 {
+    color: #333; /* Darker text color for the heading */
+    text-align: center; /* Center the heading */
+}
+
+.tab-container {
+    display: flex; /* Use flexbox for tab layout */
+    justify-content: center; /* Center tabs horizontally */
+    margin-bottom: 20px; /* Space below the tabs */
+}
+
+button {
+    background-color: #007bff; /* Blue background for buttons */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Increase font size for readability */
+    margin: 0 10px; /* Space between buttons */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+/* Form Styles */
+form {
+    background-color: #fff; /* White background for forms */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside the form */
+    margin-bottom: 20px; /* Space below the form */
+}
+
+label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 10px; /* Space below labels */
+    font-weight: bold; /* Bold text for labels */
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%; /* Full width for inputs and select */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below inputs */
+    font-size: 16px; /* Increase font size for readability */
+}
+
+/* List Styles */
+.inventory-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.inventory-list-item {
+    display: flex; /* Use flexbox for item layout */
+    justify-content: space-between; /* Space between item text and delete button */
+    align-items: center; /* Center items vertically */
+    background-color: #fff; /* White background for list items */
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside list items */
+    margin-bottom: 10px; /* Space below list items */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red background for delete buttons */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 5px 10px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
