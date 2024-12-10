@@ -80,7 +80,7 @@ const NewInvoice = ({ inventory = [], refreshInventory }) => {
 
       // Update inventory stock for each medicine
       for (const medicine of formData.medicines) {
-        await axios.put(`${API_URL}/${medicine.id}/new-invoice`, null, {
+        await axios.put(`${API_URL}/${medicine.id}/dispence`, null, {
           params: { quantity: medicine.quantity },
           headers: {
             Authorization: `Bearer ${token}`,
